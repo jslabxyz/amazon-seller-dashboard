@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Seller Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Amazon Seller Dashboard - August 2025</h1>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon">💰</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="total-revenue">$0</div>
+                            <div class="kpi-label">Total Revenue</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📈</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="total-profit">$0</div>
+                            <div class="kpi-label">Total Profit</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📊</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="profit-margin">0%</div>
+                            <div class="kpi-label">Profit Margin</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📦</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="total-units">0</div>
+                            <div class="kpi-label">Total Units Sold</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">🎯</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="conversion-rate">0%</div>
+                            <div class="kpi-label">Conversion Rate</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">👥</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="total-sessions">0</div>
+                            <div class="kpi-label">Total Sessions</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">👀</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="page-views">0</div>
+                            <div class="kpi-label">Page Views</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">🛍️</div>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="active-products">44</div>
+                            <div class="kpi-label">Active Products</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="dashboard-nav">
+            <div class="container">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="overview">Overview</button>
+                    <button class="nav-tab" data-tab="brand-performance">Brand Performance</button>
+                    <button class="nav-tab" data-tab="product-analysis">Product Analysis</button>
+                    <button class="nav-tab" data-tab="advertising-metrics">Advertising Metrics</button>
+                    <button class="nav-tab" data-tab="performance-alerts">Performance Alerts</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="container">
+                <!-- Overview Tab -->
+                <div class="tab-content active" id="overview">
+                    <div class="content-grid">
+                        <div class="chart-card">
+                            <h3>Revenue vs Profit by Brand</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="revenue-profit-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Revenue Distribution</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="revenue-distribution-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <h3>Top 5 Performing Products</h3>
+                        <div class="table-container">
+                            <table class="performance-table" id="top-products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Title</th>
+                                        <th>Brand</th>
+                                        <th>Revenue</th>
+                                        <th>Profit</th>
+                                        <th>Margin %</th>
+                                        <th>Units Sold</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Performance Tab -->
+                <div class="tab-content" id="brand-performance">
+                    <div class="content-grid">
+                        <div class="chart-card">
+                            <h3>Units Sold by Brand</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="units-by-brand-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Conversion Rate Comparison</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="conversion-rate-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <h3>Brand Performance Details</h3>
+                        <div class="table-container">
+                            <table class="performance-table" id="brand-performance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Revenue</th>
+                                        <th>Profit</th>
+                                        <th>Margin %</th>
+                                        <th>Units</th>
+                                        <th>Sessions</th>
+                                        <th>Conversion %</th>
+                                        <th>Products</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Analysis Tab -->
+                <div class="tab-content" id="product-analysis">
+                    <div class="content-grid">
+                        <div class="chart-card">
+                            <h3>Revenue vs Profit Margin</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="revenue-margin-scatter"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Top 10 Products by Revenue</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="top-products-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <h3>Products Needing Attention</h3>
+                        <div class="table-container">
+                            <table class="performance-table" id="attention-products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Title</th>
+                                        <th>Brand</th>
+                                        <th>Revenue</th>
+                                        <th>Profit</th>
+                                        <th>Margin %</th>
+                                        <th>Units Sold</th>
+                                        <th>Conversion %</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advertising Metrics Tab -->
+                <div class="tab-content" id="advertising-metrics">
+                    <div class="content-grid">
+                        <div class="chart-card">
+                            <h3>ACOS by Brand</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="acos-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>ROAS Performance</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="roas-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <h3>Advertising Performance Details</h3>
+                        <div class="table-container">
+                            <table class="performance-table" id="advertising-table">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>PPC Spend</th>
+                                        <th>PPC Sales</th>
+                                        <th>ACOS %</th>
+                                        <th>TACOS %</th>
+                                        <th>ROAS</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Alerts Tab -->
+                <div class="tab-content" id="performance-alerts">
+                    <div class="alerts-grid">
+                        <div class="alert-section">
+                            <h3>🔴 Negative Margin Products</h3>
+                            <div class="alert-list" id="negative-margin-alerts"></div>
+                        </div>
+                        <div class="alert-section">
+                            <h3>⚠️ Low Conversion Rate Products</h3>
+                            <div class="alert-list" id="low-conversion-alerts"></div>
+                        </div>
+                        <div class="alert-section">
+                            <h3>💰 High ACOS Products</h3>
+                            <div class="alert-list" id="high-acos-alerts"></div>
+                        </div>
+                        <div class="alert-section">
+                            <h3>📊 Performance Summary</h3>
+                            <div class="summary-stats" id="performance-summary"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
